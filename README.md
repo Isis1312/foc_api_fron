@@ -1,108 +1,120 @@
-# Frontend IUJO FOC 2025-2
+# 🏢 Sistema de Inventario FOC - Frontend
 
-Interfaz en Vite + TypeScript para visualizar todos los módulos del sistema de inventario. Esta aplicación se conecta con la API REST desarrollada en `api15112025`, incorpora navegación sin framework y consume los endpoints de listado (GET) para todas las entidades mediante Axios.
+## 📖 Descripción
+Frontend completo y funcional para el Sistema de Gestión de Inventario . Desarrollado con Vite + TypeScript, proporciona una interfaz moderna y responsive para gestionar almacenes, áreas, productos, usuarios y más.
 
-**Autor:** Ing. Eduardo Nieves (`zedmous@gmail.com`)
+**🔗 Backend Compatible:** [foc_api](https://github.com/Isis1312/foc_api.git)
 
-## 🧱 Arquitectura y stack
-- **Vite + TypeScript**: bundler ultrarrápido con soporte ESM nativo.
-- **Vanilla TS/DOM**: los módulos se renderizan con plantillas HTML sencillas (sin React/Vue).
-- **Axios**: cliente HTTP centralizado (`src/services/http.service.ts`).
-- **Diseño**: estilos globales (`src/style.css`) con un tema oscuro consistente.
+## 🚀 Características
 
-```
-src/
- ├─ main.ts                # Router minimal y montaje de cada módulo
- ├─ style.css              # Estilos globales + tablas
- ├─ modules/               # Vistas por dominio (test, roles, categories, warehouses, users, areas, products)
- └─ services/              # Axios + servicios de datos (solo test.service.ts implementado como ejemplo)
-```
+### ✅ Módulos Implementados y Funcionales
+- **📊 Test** - Registros de prueba del sistema
+- **👥 Roles** - Gestión de roles de usuario
+- **👤 Usuarios** - Administración de usuarios del sistema
+- **🏭 Almacenes** - Gestión de almacenes/warehouses
+- **📦 Categorías** - Categorización de productos
+- **📍 Áreas** - Áreas internas de los almacenes
+- **🛍️ Productos** - Inventario de productos completo
 
-## ✅ Características actuales
-- Navegación entre todas las entidades del sistema.
-- **Módulo Test**: Conectado al endpoint `/api/v1/test` usando Axios (ejemplo funcional completo).
-- **Otros módulos**: Estructura lista pero consumo de API pendiente de implementar (ver TODOs en servicios).
-- Layout responsivo con modo oscuro y estados de carga/empty/error.
-- Fallback a datos mock si la API no responde.
+### 🎨 Interfaz de Usuario
+- **Tema oscuro** moderno y profesional
+- **Diseño responsive** adaptable a cualquier dispositivo
+- **Navegación SPA** (Single Page Application) fluida
+- **Indicadores de carga** y estados de error
+- **Tablas optimizadas** para mejor visualización de datos
 
-## 🚀 Requisitos
-- Node.js 20+
-- npm 10+
-- Backend en ejecución: [`api15112025`](../api15112025) o cualquier API compatible.
+## 🛠️ Tecnologías Utilizadas
 
-## ⚙️ Variables de entorno
-Crear un archivo `.env` en la raíz del proyecto con la URL base del backend:
+### Dependencias Principales
+```json
+{
+  "vite": "^5.0+",
+  "typescript": "^5.0+",
+  "axios": "^1.6+"
+}
 
-```
-VITE_API_URL=http://localhost:3785/api/v1
-```
+## 🛠️ Tecnologías Utilizadas
 
-> Si omites la variable, el frontend usará `http://localhost:3785/api/v1` por defecto.
+### Dependencias Principales
+```json
+{
+  "vite": "^5.0+",
+  "typescript": "^5.0+",
+  "axios": "^1.6+"
+}
+Dependencias de Desarrollo
+json
+{
+  "@types/node": "^20.0+",
+  "typescript": "^5.0+"
+}
+📥 Instalación y Configuración
+Prerrequisitos
+Node.js 18+ (recomendado 20+)
 
-## 🏁 Puesta en marcha
-1. **Instalar dependencias**
-   ```bash
-   npm install
-   ```
-2. **Definir `.env`** (ver sección anterior).
-3. **Levantar el backend** (`npm run start:dev` dentro de `api15112025`).
-4. **Iniciar el frontend**
-   ```bash
-   npm run dev
-   ```
-5. Abrir `http://localhost:5173` y navegar por los diferentes módulos para ver las tablas conectadas.
+npm 9+ o yarn 1.22+
 
-## 📜 Scripts disponibles
+Backend FOC API ejecutándose (Repositorio)
 
-| Script | Descripción |
-| --- | --- |
-| `npm run dev` | Inicia Vite con recarga en caliente |
-| `npm run build` | Compila TypeScript y genera la build para producción |
-| `npm run preview` | Sirve la build generada para validar la salida final |
+🎯 Pasos de Instalación
+Clonar el repositorio
 
-## 🔌 Endpoints consumidos
 
-**Solo el módulo Test consume la API real** como ejemplo:
+git clone <url-del-repositorio-frontend>
+cd foc-frontend
+Instalar dependencias
 
-- `GET ${VITE_API_URL}/test` — listado de registros de test (✅ **Implementado y funcionando**)
 
-**Los demás módulos tienen TODOs en sus servicios** y deben ser implementados por los estudiantes:
+npm install
+Configurar variables de entorno
 
-- `GET ${VITE_API_URL}/roles` — listado de roles (📝 Pendiente - ver `roles.service.ts`)
-- `GET ${VITE_API_URL}/categories` — listado de categorías (📝 Pendiente - ver `categories.service.ts`)
-- `GET ${VITE_API_URL}/warehouses` — listado de almacenes (📝 Pendiente - ver `warehouses.service.ts`)
-- `GET ${VITE_API_URL}/users` — listado de usuarios (📝 Pendiente - ver `users.service.ts`)
-- `GET ${VITE_API_URL}/areas` — listado de áreas (📝 Pendiente - ver `areas.service.ts`)
-- `GET ${VITE_API_URL}/products` — listado de productos (📝 Pendiente - ver `products.service.ts`)
 
-**Nota**: El módulo `test` sirve como ejemplo de cómo consumir la API. Los estudiantes deben seguir el mismo patrón para implementar el consumo de los demás módulos. Ver comentarios TODO en cada servicio.
+# Crear archivo .env en la raíz del proyecto
+cp .env.example .env
+Editar el archivo .env:
 
-## 📋 Módulos disponibles
+env
+VITE_API_URL=http://localhost:3800/api/v1
 
-1. **Test** - Registros de prueba del sistema
-2. **Roles** - Gestión de roles del sistema
-3. **Categorías** - Categorías de productos
-4. **Almacenes** - Almacenes disponibles
-5. **Usuarios** - Usuarios del sistema
-6. **Áreas** - Áreas dentro de los almacenes
-7. **Productos** - Productos del inventario
+Ejecutar el backend (requerido)
 
-## 🧪 Estructura de archivos
+# En una terminal separada, clonar y ejecutar el backend
+git clone https://github.com/Isis1312/foc_api.git
+cd foc_api
+npm install
+npm run dev
 
-**Módulo Test (ejemplo funcional)**:
-- **Servicio**: `src/services/test.service.ts` - Consume el endpoint GET `/api/v1/test` (✅ Implementado)
-- **Módulo**: `src/modules/test.module.ts` - Renderiza la tabla y consume la API (✅ Implementado)
+Ejecutar el frontend
+npm run dev
 
-**Otros módulos (pendientes de implementar)**:
-- **Servicios**: `src/services/{entidad}.service.ts` - Tienen TODOs con instrucciones para implementar el consumo
-- **Módulos**: `src/modules/{entidad}.module.ts` - Estructura lista, solo falta conectar el servicio
+Uso del Sistema
+Acceso a la Aplicación
+URL local: http://localhost:5173
 
-**Para implementar consumo de API en otros módulos**:
-1. Abrir `src/services/{entidad}.service.ts`
-2. Seguir las instrucciones en los comentarios TODO
-3. Descomentar y adaptar el código de ejemplo (basado en `test.service.ts`)
-4. El módulo ya está configurado para usar el servicio, solo necesita que el servicio esté implementado
+API Backend: http://localhost:3800/api/v1
 
----
-**Autor:** Ing. Eduardo Nieves (`zedmous@gmail.com`). Contribuciones y sugerencias son bienvenidas. 🎉
-
+foc-frontend/
+├── src/
+│   ├── modules/           # Módulos de la aplicación
+│   │   ├── test.module.ts
+│   │   ├── roles.module.ts
+│   │   ├── users.module.ts
+│   │   ├── warehouses.module.ts
+│   │   ├── categories.module.ts
+│   │   ├── areas.module.ts
+│   │   └── products.module.ts
+│   ├── services/          # Servicios de API
+│   │   ├── http.service.ts
+│   │   ├── test.service.ts
+│   │   ├── roles.service.ts
+│   │   ├── users.service.ts
+│   │   ├── warehouses.service.ts
+│   │   ├── categories.service.ts
+│   │   ├── areas.service.ts
+│   │   └── products.service.ts
+│   ├── main.ts           # Punto de entrada
+│   └── style.css         # Estilos globales
+├── index.html
+├── package.json
+├── vite.config.ts
+└── .env.example
