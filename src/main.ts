@@ -3,18 +3,18 @@ import { renderTestModule, mountTestModule } from './modules/test.module'
 import { renderCategoriesModule, mountCategoriesModule } from './modules/categories.module'
 import { renderUsersModule, mountUsersModule } from './modules/users.module'
 import { renderRolesModule, mountRolesModule } from './modules/roles.module'
-import { renderWarehousesModule, mountWarehousesModule } from './modules/warehouses.module'
+import { renderWarehausesModule, mountWarehausesModule } from './modules/warehauses.module.ts'
 import { renderAreasModule, mountAreasModule } from './modules/areas.module'
 import { renderProductsModule, mountProductsModule } from './modules/products.module'
 
-type Route = 'home' | 'test' | 'categories' | 'users' | 'roles' | 'warehouses' | 'areas' | 'products'
+type Route = 'home' | 'test' | 'categories' | 'users' | 'roles' | 'warehauses' | 'areas' | 'products'
 
 const NAV_ITEMS: { label: string; route: Route }[] = [
   { label: 'Inicio', route: 'home' },
   { label: 'Test', route: 'test' },
   { label: 'Roles', route: 'roles' },
   { label: 'Categorías', route: 'categories' },
-  { label: 'Almacenes', route: 'warehouses' },
+  { label: 'Almacenes', route: 'warehauses' },
   { label: 'Usuarios', route: 'users' },
   { label: 'Áreas', route: 'areas' },
   { label: 'Productos', route: 'products' },
@@ -62,8 +62,8 @@ const mountModule = () => {
     case 'roles':
       void mountRolesModule()
       break
-    case 'warehouses':
-      void mountWarehousesModule()
+    case 'warehauses':
+      void mountWarehausesModule()
       break
     case 'areas':
       void mountAreasModule()
@@ -101,8 +101,8 @@ const renderRoute = () => {
       return renderUsersModule()
     case 'roles':
       return renderRolesModule()
-    case 'warehouses':
-      return renderWarehousesModule()
+    case 'warehauses':
+      return renderWarehausesModule()
     case 'areas':
       return renderAreasModule()
     case 'products':

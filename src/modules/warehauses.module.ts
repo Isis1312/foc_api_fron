@@ -1,15 +1,15 @@
-import { listWarehouses, type WarehouseRow } from '../services/warehouses.service'
+import { listWarehauses, type WarehauseRow } from '../services/warehauses.service'
 
-const WAREHOUSES_TABLE_BODY_ID = 'warehouses-table-body'
+const WAREHAUSES_TABLE_BODY_ID = 'warehauses-table-body'
 
-const renderTableRows = (warehouses: WarehouseRow[]) =>
-  warehouses
+const renderTableRows = (warehauses: WarehauseRow[]) =>
+  warehauses
     .map(
-      (warehouse) => `
+      (warehause) => `
     <tr>
-      <td>${warehouse.id}</td>
-      <td>${warehouse.name}</td>
-      <td>${warehouse.status}</td>
+      <td>${warehause.id}</td>
+      <td>${warehause.name}</td>
+      <td>${warehause.status}</td>
     </tr>
   `,
     )
@@ -23,13 +23,13 @@ const renderStatusRow = (message: string, isError = false) => `
   </tr>
 `
 
-export const renderWarehousesModule = () => `
+export const renderWarehausesModule = () => `
   <section class="module">
     <header class="module__header">
       <p class="eyebrow">Módulo</p>
       <h2>Almacenes</h2>
       <p class="muted">
-        Lista de almacenes registrados. Esta tabla se conecta con <code>/api/v1/warehouses</code>
+        Lista de almacenes registrados. Esta tabla se conecta con <code>/api/v1/warehauses</code>
         para mostrar los datos reales.
       </p>
     </header>
@@ -42,7 +42,7 @@ export const renderWarehousesModule = () => `
             <th>Estado</th>
           </tr>
         </thead>
-        <tbody id="${WAREHOUSES_TABLE_BODY_ID}">
+        <tbody id="${WAREHAUSES_TABLE_BODY_ID}">
           ${renderStatusRow('Cargando almacenes...')}
         </tbody>
       </table>
@@ -50,8 +50,8 @@ export const renderWarehousesModule = () => `
   </section>
 `
 
-export const mountWarehousesModule = async () => {
-  const tableBody = document.querySelector<HTMLTableSectionElement>(`#${WAREHOUSES_TABLE_BODY_ID}`)
+export const mountWarehausesModule = async () => {
+  const tableBody = document.querySelector<HTMLTableSectionElement>(`#${WAREHAUSES_TABLE_BODY_ID}`)
   if (!tableBody) return
 
   const setRows = (rows: string) => {
@@ -59,14 +59,14 @@ export const mountWarehousesModule = async () => {
   }
 
   try {
-    const warehouses = await listWarehouses()
-    if (!warehouses.length) {
+    const warehauses = await listWarehauses()
+    if (!warehauses.length) {
       setRows(renderStatusRow('No hay almacenes registrados.'))
       return
     }
-    setRows(renderTableRows(warehouses))
+    setRows(renderTableRows(warehauses))
   } catch (error) {
-    console.error('mountWarehousesModule error:', error)
+    console.error('mountWarehausesModule error:', error)
     setRows(renderStatusRow('No se pudieron cargar los almacenes.', true))
   }
 }
