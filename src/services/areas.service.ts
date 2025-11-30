@@ -3,14 +3,20 @@ import { httpGet, type ApiListResponse } from './http.service'
 type ApiArea = {
   id: number
   name: string
-  warehouse_id?: number | null
+  warehauses_id?: number | null
   status?: boolean | null
+  warehause?: {  
+    id: number
+    name: string
+    status: boolean
+  } | null
 }
+
 
 export type AreaRow = {
   id: number
   name: string
-  warehouse: string
+  warehause: string
   status: string
 }
 
@@ -19,15 +25,15 @@ type AreasResponse = ApiListResponse<{
 }>
 
 const FALLBACK_AREAS: AreaRow[] = [
-  { id: 1, name: 'Área 1', warehouse: 'Almacén #1', status: 'Activo' },
-  { id: 2, name: 'Área 2', warehouse: 'Almacén #2', status: 'Activo' },
+  { id: 1, name: 'Área 1', warehause: 'Almacén #1', status: 'Activo' },
+  { id: 2, name: 'Área 2', warehause: 'Almacén #2', status: 'Activo' },
 ]
 
 const normalizeAreas = (areas: ApiArea[] = []): AreaRow[] =>
   areas.map((area) => ({
     id: area.id,
     name: area.name,
-    warehouse: area.warehouse_id ? `Almacén #${area.warehouse_id}` : 'Sin almacén',
+    warehouse: area.warehause?.name || `Almacén #${area.warehauses_id}` || 'Sin almacén',
     status: area.status === false ? 'Inactivo' : 'Activo',
   }))
 
