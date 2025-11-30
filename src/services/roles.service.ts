@@ -45,7 +45,7 @@ const normalizeRoles = (roles: ApiRole[] = []): RoleRow[] =>
 export const listRoles = async (): Promise<RoleRow[]> => {
   // TODO: Implementar consumo de API aquí
   // Ejemplo de cómo debe quedar (descomenta y adapta):
-  /*
+  
   try {
     const response = await httpGet<RolesResponse>('/roles')
     const roles = response.data?.roles
@@ -57,9 +57,8 @@ export const listRoles = async (): Promise<RoleRow[]> => {
     console.warn('listRoles fallback:', error)
     return FALLBACK_ROLES
   }
-  */
+
   
-  // Por ahora retorna datos mock
-  return FALLBACK_ROLES
+  
 }
 
